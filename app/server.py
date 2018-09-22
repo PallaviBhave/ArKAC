@@ -48,7 +48,7 @@ def delete():
 def post_image():
     print(request.form)
     try:
-        print("Received a post for \'{}\' and a code of \'{}\' at \'{}\'.".format(request.form["name"], request.form["code"], time.asctime()))
+        print("\t\t\tReceived a post for \'{}\' and a code of \'{}\' at \'{}\'.".format(request.form["name"], request.form["code"], time.asctime()))
         print(time.asctime())
         event = Event(name=request.form["name"], code=int(request.form["code"]), time=int(time.time()))
         db.session.add(event)
