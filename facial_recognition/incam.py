@@ -54,7 +54,7 @@ while True:
         if True in matches:
             first_match_index = matches.index(True)
             name = known_face_names[first_match_index]
-            print("Posted")
+            print("Posted " + name)
             requests.post('http://hackcmu.pillai.io:5000/post', data={'name': name, 'code': CAM})
         else:
             print("No match found")
