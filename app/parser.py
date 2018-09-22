@@ -26,12 +26,15 @@ def parse(events):
         for i in range(0, len(rem_dupes) - 1, 2):
             tic += rem_dupes[i+1].time - rem_dupes[i].time
 
-        last_exit = datetime.datetime.fromtimestamp(rem_dupes[-1].time)
-
         result = {}
+        try:
+            last_exit = datetime.datetime.fromtimestamp(rem_dupes[-1].time)
+            result['last_exit'] = last_exit.strftime('%H:%M:%S, %b %d %Y')
+        except:
+            result['last_exit'] = '-'
+
         result['name'] = person
         result['first_entry'] = first_entry.strftime('%H:%M:%S, %b %d %Y')
-        result['last_exit'] = last_exit.strftime('%H:%M:%S, %b %d %Y')
         result['time_in_class'] = str(tic / 60) + " minutes"
         result['present'] = "Present" if tic > 1 * 60 else "Absent"
 
