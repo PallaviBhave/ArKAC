@@ -38,7 +38,7 @@ def parse(events):
         result['name'] = person
         result['first_entry'] = first_entry.strftime('%H:%M:%S, %b %d %Y')
         result['time_in_class'] = "%0.2f minutes" % (tic / 60.0)
-        result['present'] = "Present" if tic > 1 * 60 else "Absent"
+        result['present'] = "Present" if tic > 30 * 60 else "Absent"
 
         results.append(result)
 
