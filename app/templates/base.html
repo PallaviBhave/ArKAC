@@ -9,16 +9,18 @@
   </head>
   <body>
   <section class="section">
-    <div class="container">
-      <h1 class="title">
-        Data
-      </h1>
-      <ol>
-        <li>Test item</li>
-        {% for event in events %}
-        <li>{{ event.name }}, {{ event.code }}, {{ event.time }}</li>
-        {% endfor %}
-      </ol>
+    <div class="columns">
+      <div class="container">
+        <h1 class="title">
+          Data
+        </h1>
+        <ol>
+          <li>Test item</li>
+          {% for event in events %}
+          <li>{{ event.name }}, {{ event.code }}, {{ event.time }}</li>
+          {% endfor %}
+        </ol>
+      </div>
     </div>
   </section>
   </body>
