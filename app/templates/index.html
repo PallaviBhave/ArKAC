@@ -51,7 +51,13 @@
 								<td class="column2">{{ person.first_entry }}</td>
 								<td class="column3">{{ person.last_exit }}</td>
 								<td class="column4">{{ person.time_in_class }}</td>
-								<td class="column5">{{ person.present }}</td>
+								<td class="column5">
+									{% if person.present == "Present" %}
+									<span style="color: #26a65b">PRESENT</span>
+									{% else %}
+									<span style="color: red">ABSENT</span>
+									{% endif %}
+								</td>			
 							</tr>
 							{% endfor %}
 						</tbody>
