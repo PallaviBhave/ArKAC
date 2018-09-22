@@ -28,7 +28,6 @@ class Event(db.Model):
 def index():
     print("Index page")
     if request.method == "GET":
-        print(Event.query.all())
         data = parse(Event.query.all())
         return render_template("index.html", persons=data)
         # return render_template('index.html')
@@ -37,23 +36,17 @@ def index():
 
 @app.route("/delete", methods=["GET"])
 def delete():
-    print("Deleting")
     for event in Event.query.all():
         db.session.delete(event)
-        print("Deleted ", event)
         db.session.commit()
     return "Deleted."
 
 @app.route("/post", methods=["POST"])
 def post_image():
-    print(request.form)
     try:
-        print("\t\t\tReceived a post for \'{}\' and a code of \'{}\' at \'{}\'.".format(request.form["name"], request.form["code"], time.asctime()))
-        print(time.asctime())
         event = Event(name=request.form["name"], code=int(request.form["code"]), time=int(time.time()))
         db.session.add(event)
         db.session.commit()
-        print("Commited.")
         return "Success."
     except Exception as e:
         print("Post request threw an exception:\n {}.".format(e))
