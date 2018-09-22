@@ -24,8 +24,11 @@ def parse(events):
         for i in range(0, len(rem_dupes) - 1, 2):
             tic += rem_dupes[i+1].time - rem_dupes[i].time
 
+
         first_entry = datetime.datetime.fromtimestamp(rem_dupes[0].time)
         last_exit = datetime.datetime.fromtimestamp(rem_dupes[-1].time)
+
+        print(tic / 1000 / 60)
 
         result = {}
         result['name'] = person
