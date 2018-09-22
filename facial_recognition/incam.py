@@ -6,7 +6,7 @@ import requests
 
 from os import listdir
 
-CAM = "1"
+CAM = "0"
 
 # This is a super simple (but slow) example of running face recognition on live video from your webcam.
 # There's a second example that's a little more complicated but runs faster.
@@ -55,7 +55,7 @@ while True:
             first_match_index = matches.index(True)
             name = known_face_names[first_match_index]
             print("Posted")
-            requests.post('http://hackmu.pillai.io:5000/post', data={'name': name, 'code': CAM})
+            requests.post('http://hackcmu.pillai.io:5000/post', data={'name': name, 'code': CAM})
         else:
             print("No match found")
 
