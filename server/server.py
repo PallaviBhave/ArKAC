@@ -36,5 +36,8 @@ class Res(Resource):
     def delete(self, payload):
         pass
 
+@app.route("/")
+def test():
+    return "Hello, World!"
 api.add_resource(Res, "/arkac/<string:payload>")
 app.run(host='0.0.0.0', debug=True) # Remove debug=True when finally deploying
