@@ -17,6 +17,9 @@ def parse(events):
                 rem_dupes.append(entry)
                 code = 1 - code
 
+        if len(rem_dupes) == 1 && rem_dupes[0] == 1:
+            continue
+            
         first_entry = datetime.datetime.fromtimestamp(rem_dupes[0].time)
 
         tic_delta = 0
