@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, g
 from flask_sqlalchemy import SQLAlchemy
-import time
+import datetime, time
 import sqlite3
 
 app = Flask(__name__)
@@ -17,7 +17,7 @@ class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=False, nullable=False)
     code = db.Column(db.Integer, unique=False, nullable=False)
-    time = db.Column(db.String(24), unique=False, nullable=True)
+    time = db.Column(db.Integer, unique=False, nullable=True)
 
     def __repr__(self):
         return '<User %r>' % self.name
@@ -27,9 +27,13 @@ class Event(db.Model):
 def index():
     print("Index page")
     if request.method == "GET":
-        for person in Event.query.all():
-            print(person.name, person.code)
-        return render_template("base.html", events=Event.query.all())
+
+        # Create a dictionary k: names
+        
+
+        for event in Event.query.all():
+            print(event.name, event.code)
+        return render_template("index.html", person=Event.query.all())
         # return render_template('index.html')
     return "POST"
     # Otherwise, we are logged in
@@ -41,7 +45,7 @@ def post_image():
     try:
         print("Received a post for \'{}\' and a code of \'{}\' at \'{}\'.".format(request.form["name"], request.form["code"], time.asctime()))
         print(time.asctime())
-        event = Event(name=request.form["name"], code=int(request.form["code"]), time=time.asctime())
+        event = Event(name=request.form["name"], code=int(request.form["code"]), time=int(time.time()))
         db.session.add(event)
         db.session.commit()
         print("Commited.")
@@ -53,5 +57,5 @@ def post_image():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", debug=True)
     
