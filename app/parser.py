@@ -1,4 +1,4 @@
-import datetime
+import datetime, time
 
 def parse(events):
     people = { i.name for i in events }
