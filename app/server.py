@@ -26,7 +26,6 @@ class Event(db.Model):
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    print("Index page")
     if request.method == "GET":
         data = parse(Event.query.all())
         return render_template("index.html", persons=data)
