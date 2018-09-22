@@ -17,7 +17,7 @@ def parse(events):
                 rem_dupes.append(entry)
                 code = 1 - code
 
-        if len(rem_dupes) == 1 and rem_dupes[0] == 1:
+        if len(rem_dupes) == 0:
             continue
 
         first_entry = datetime.datetime.fromtimestamp(rem_dupes[0].time)
