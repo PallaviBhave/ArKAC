@@ -6,7 +6,7 @@ import requests
 
 from os import listdir
 
-CAM = "1"
+CAM = "0"
 
 # This is a super simple (but slow) example of running face recognition on live video from your webcam.
 # There's a second example that's a little more complicated but runs faster.
@@ -56,8 +56,11 @@ while True:
         if True in matches:
             first_match_index = matches.index(True)
             name = known_face_names[first_match_index]
-            payload = name + '#' + CAM
-            requests.post('http://128.237.112.192:5000/arkac/' + payload, params={}, data={})
+            payload = name + '-' + CAM
+            print("Posted")
+            requests.post('http://128.237.204.149:5000/arkac/' + payload, params={}, data={})
+        else:
+            print("No match found")
 
         # Draw a box around the face
         # cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)

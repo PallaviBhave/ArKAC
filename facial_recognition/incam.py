@@ -50,15 +50,12 @@ while True:
         # See if the face is a match for the known face(s)
         matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
 
-        name = "unknown"
-
         # If a match was found in known_face_encodings, just use the first one.
         if True in matches:
             first_match_index = matches.index(True)
             name = known_face_names[first_match_index]
-            payload = name + '-' + CAM
             print("Posted")
-            requests.post('http://128.237.204.149:5000/arkac/' + payload, params={}, data={})
+            requests.post('http://hackmu.pillai.io:5000/post', data={'name': name, 'code': CAM})
         else:
             print("No match found")
 
@@ -73,7 +70,7 @@ while True:
     # Display the resulting image
     # cv2.imshow('Video', frame)
 
-    time.sleep(1)
+    time.sleep(0.5)
 
     # Hit 'q' on the keyboard to quit!
     if cv2.waitKey(1) & 0xFF == ord('q'):
