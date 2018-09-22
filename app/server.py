@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, g
 from flask_sqlalchemy import SQLAlchemy
+from parser import parse
 import datetime, time
 import sqlite3
 
@@ -20,24 +21,28 @@ class Event(db.Model):
     time = db.Column(db.Integer, unique=False, nullable=True)
 
     def __repr__(self):
-        return '<User %r>' % self.name
+        return "[{}, {}, {}, {}]".format(type(self), self.name, self.code, self.time)
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     print("Index page")
     if request.method == "GET":
-
-        # Create a dictionary k: names
-        
-
-        for event in Event.query.all():
-            print(event.name, event.code)
-        return render_template("index.html", person=Event.query.all())
+        print(Event.query.all())
+        data = parse(Event.query.all())
+        return render_template("index.html", persons=data)
         # return render_template('index.html')
     return "POST"
     # Otherwise, we are logged in
 
+@app.route("/delete", methods=["GET"])
+def delete():
+    print("Deleting")
+    for event in Event.query.all():
+        db.session.delete(event)
+        print("Deleted ", event)
+        db.session.commit()
+    return "Deleted."
 
 @app.route("/post", methods=["POST"])
 def post_image():

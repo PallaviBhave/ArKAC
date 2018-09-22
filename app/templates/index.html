@@ -31,25 +31,25 @@
 						<thead>
 							<tr class="table100-head">
 								<th class="column1">Name</th>
-								<th class="column2">Entered Time</th>
-								<th class="column3">Exit Time</th>
-								<th class="column4">Time in Classs</th>
+								<th class="column2">First Entry</th>
+								<th class="column3">Last Exit</th>
+								<th class="column4">Time in Class</th>
 								<th class="column5">Present</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td class="column1">Adit</td>
-								<td class="column2">Never</td>
-								<td class="column3">Never</td>
-								<td class="column4">A little</td>
-								<td class="column5">Never</td>
+								<td class="column2">Never First Entered</td>
+								<td class="column3">Never First Exited</td>
+								<td class="column4">Spent very little time in class</td>
+								<td class="column5">Probably Absent</td>
 							</tr>
 							{% for person in persons %}
 							<tr>
 								<td class="column1">{{ person.name }}</td>
-								<td class="column2">{{ person.enter_time }}</td>
-								<td class="column3">{{ person.exit_time }}</td>
+								<td class="column2">{{ person.first_entry }}</td>
+								<td class="column3">{{ person.last_exit }}</td>
 								<td class="column4">{{ person.time_in_class }}</td>
 								<td class="column5">{{ person.present }}</td>
 							</tr>
