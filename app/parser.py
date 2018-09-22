@@ -1,23 +1,23 @@
 import datetime
 
 def parse(events):
-    people = { i['name'] for i in events }
+    people = { i.name for i in events }
     people = list(people)
 
     results = []
 
     for person in people:
-        all_entries = filter(lambda x : x['name' == person], events)
+        all_entries = filter(lambda x : x.name == person, events)
 
         rem_dupes = []
         code = 0
 
         for entry in all_entries:
-            if entry['code'] == code:
+            if entry.code == code:
                 rem_dupes.append(entry)
                 code = 1 - code
 
-        if rem_dupes[-1]['code'] == 0:
+        if rem_dupes[-1].code == 0:
             rem_dupes = rem_dupes[:-1]
 
         tic = 0
