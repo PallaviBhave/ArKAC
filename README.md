@@ -1,8 +1,4 @@
-# ArKAC Project - HackCMU 2018
+# ArKAL Project - HackCMU 2018
+Are Kids Attending Lectures?
 
 Project by Pallavi Bhave, Sayan Chaudhry, and Aditya Pillai. Built at HackCMU 2018.
-
-- [ArKAC Project - HackCMU 2018](#arkac-project---hackcmu-2018)
-  - [File Structure](#file-structure)
-
-## File Structure
