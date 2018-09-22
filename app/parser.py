@@ -19,10 +19,12 @@ def parse(events):
 
         first_entry = datetime.datetime.fromtimestamp(rem_dupes[0].time)
 
+        tic_delta = 0
         if rem_dupes[-1].code == 0:
+            tic_delta = time.time() - rem_dupes[-1].time
             rem_dupes = rem_dupes[:-1]
 
-        tic = 0
+        tic = tic_delta
         for i in range(0, len(rem_dupes) - 1, 2):
             tic += rem_dupes[i+1].time - rem_dupes[i].time
 
