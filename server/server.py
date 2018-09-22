@@ -4,9 +4,15 @@ Run RESTful Flask server to receive requests from client
 
 from flask import Flask, request
 from flask_restful import Api, Resource, reqparse
+from pymongo import MongoClient
+
+
 
 app = Flask("name")
 api = Api(app)
+client = MongoClient()
+db = client['attendance']
+
 
 class Res(Resource):
 
@@ -14,7 +20,15 @@ class Res(Resource):
         pass
 
     def post(self, payload):
-        print(payload)
+        # Receiving a picture
+
+        posts = db.posts
+        post_data = {
+            'name': payload[:-2],
+            'entering': int(payload[-1:])
+        }
+        result = posts.insert_one(post_data)
+        print('One post: {0}'.format(result.inserted_id))
 
     def put(self, payload):
         pass
