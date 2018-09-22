@@ -28,8 +28,6 @@ def parse(events):
         first_entry = datetime.datetime.fromtimestamp(rem_dupes[0].time)
         last_exit = datetime.datetime.fromtimestamp(rem_dupes[-1].time)
 
-        print("Time in class", tic)
-
         result = {}
         result['name'] = person
         result['first_entry'] = first_entry.strftime('%H:%M:%S, %b %d %Y')
