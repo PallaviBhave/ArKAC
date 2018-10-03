@@ -70,7 +70,7 @@ while True:
     # Display the resulting image
     # cv2.imshow('Video', frame)
 
-    time.sleep(0.5)
+    # time.sleep(0.5)
 
     # Hit 'q' on the keyboard to quit!
     if cv2.waitKey(1) & 0xFF == ord('q'):

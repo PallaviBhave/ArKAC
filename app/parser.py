@@ -17,6 +17,9 @@ def parse(events):
                 rem_dupes.append(entry)
                 code = 1 - code
 
+        if len(rem_dupes) == 0:
+            continue
+
         first_entry = datetime.datetime.fromtimestamp(rem_dupes[0].time)
 
         tic_delta = 0
@@ -37,7 +40,7 @@ def parse(events):
 
         result['name'] = person
         result['first_entry'] = first_entry.strftime('%H:%M:%S, %b %d %Y')
-        result['time_in_class'] = "%0.2f minutes" % (tic / 60.0 - 1.99)
+        result['time_in_class'] = "%0.2f minutes" % (tic / 60.0)
         result['present'] = "Present" if tic > 30 * 60 else "Absent"
 
         results.append(result)
